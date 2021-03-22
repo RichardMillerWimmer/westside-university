@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 export default class ClassList extends Component {
   constructor() {
@@ -17,10 +18,10 @@ export default class ClassList extends Component {
   }
 
   render() {
-    const studentList = this.state.students.map((elem, i) => (<h3 key={i}>{elem.first_name} {elem.last_name}</h3>))
+    const studentList = this.state.students.map((elem, i) => (<Link to={`/student/${elem.id}`} key={i} > <h3 >{elem.first_name} {elem.last_name}</h3></Link >))
     return (
       <div className="box">
-        <h1></h1>
+        <h1>{this.props.match.params.class}</h1>
         <h2>ClassList:</h2>
         {studentList}
       </div>
